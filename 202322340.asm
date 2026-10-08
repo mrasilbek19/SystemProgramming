@@ -1,10 +1,10 @@
+
 MAIN    START   0
         JSUB    INPUT
         JSUB    PROCESS
         JSUB    OUTPUT
 
 HALT    J       HALT
-
 
 INPUT   CLEAR   X
 
@@ -19,7 +19,6 @@ INLOOP  TD      INDEV
         RSUB
 
 PROCESS CLEAR   X
-
 
 CONVERT STX     POS
 
@@ -49,12 +48,10 @@ CONVERT STX     POS
         COMPR   X,T
         JLT     CONVERT
 
-
         CLEAR   X
 
         LDA     HUNDRED
         STA     MINDIFF
-
 
 PAIRLP  STX     POS
 
@@ -72,15 +69,12 @@ PAIRLP  STX     POS
         COMP    ZERO
         JLT     MAKEPOS
 
-
 CHECK   COMP    MINDIFF
         JLT     UPDATE
         J       NEXT
 
-
 MAKEPOS MUL     NEGONE
         J       CHECK
-
 
 UPDATE  STA     MINDIFF
 
@@ -89,7 +83,6 @@ UPDATE  STA     MINDIFF
 
         LDA     VALUE2
         STA     RESULT2
-
 
 NEXT    LDX     POS
 
@@ -109,7 +102,6 @@ WAIT1   TD      OUTDEV
         JEQ     WAIT1
         WD      OUTDEV
 
-
         LDA     RESULT1
         DIV     TEN
         MUL     TEN
@@ -122,12 +114,10 @@ WAIT2   TD      OUTDEV
         JEQ     WAIT2
         WD      OUTDEV
 
-
         LDA     SPACE
 WAIT3   TD      OUTDEV
         JEQ     WAIT3
         WD      OUTDEV
-
 
         LDA     RESULT2
         DIV     TEN
@@ -135,7 +125,6 @@ WAIT3   TD      OUTDEV
 WAIT4   TD      OUTDEV
         JEQ     WAIT4
         WD      OUTDEV
-
 
         LDA     RESULT2
         DIV     TEN
@@ -150,7 +139,6 @@ WAIT5   TD      OUTDEV
         WD      OUTDEV
 
         RSUB
-
 
 INDEV   BYTE    X'03'
 OUTDEV  BYTE    X'04'
